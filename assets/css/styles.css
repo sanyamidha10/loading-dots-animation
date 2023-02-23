@@ -27,12 +27,51 @@ body {
   overflow: hidden;
 }
 
+.loading{
+  color: var(--text-color);
+  font-size: var(--loading-font-size);
+  font-family: var(--body-font);
+}
+
+.loading__dots{
+  display: inline-flex;
+  column-gap: .25rem;
+}
+
+.loading__dot{
+  position: relative;
+  width: 8px;
+  height: 8px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+}
+
+.loading__dot:nth-child(1){
+  position: absolute;
+  transform: scale(0);
+}
 
 /* Add animated class */
+.animate .loading__dot:nth-child(1){
+  animation: scale-dot .8s .2s forwards;
+}
 
+.animate .loading__dot:nth-child(2),
+.animate .loading__dot:nth-child(3){
+  animation: move-right .6s forwards;
+} 
+
+.animate .loading__dot-down{
+  animation: move-right-down .8s .2s forwards linear,
+             move-down 2.8s .3s forwards ease-in; 
+}
 
 /* Animated dot 1 */
-
+@keyframes scale-dot{
+  100%{
+    transform: scale(1);
+  }
+}
 
 /* Animated dot 2 & 3*/
 
